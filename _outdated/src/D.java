@@ -1,8 +1,6 @@
-package d;
-
 import java.util.Scanner;
 
-public class Main {
+public class D {
     public static void main(String[] args) {
         /* fixme: не работающая версия
         Scanner scanner = new Scanner(System.in);

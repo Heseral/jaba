@@ -1,8 +1,6 @@
-package c;
-
 import java.util.Scanner;
 
-public class Main {
+public class C {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int amount = scanner.nextInt();
