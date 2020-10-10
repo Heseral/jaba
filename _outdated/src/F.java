@@ -19,24 +19,40 @@ public class F {
             x1 = x2;
             x2 = temp;
         }
+        boolean isWidthNechetnaya = (width & 1) == 1;
+        boolean isLeftSideNechetnaya = (x1 & 1) == 1;
+        boolean isRightSideNechetnaya = ((width - x2 + 1) & 1) == 1;
 
         int halfedPlitkaAmount = 0;
         int odinocnayaPlitkaAmount = 0;
 
         for (int row = 0; row < height; row++) {
-            for (int col = 0; col < width; col++) {
-                if (row >= y1 && row <= y2 && col >= x1 && col <= x2) {
-                    continue;
-                }
-                if (col == width - 1 || (row >= y1 && row <= y2 && col + 1 >= x1 && col + 1 <= x2)) {
+            if (row < y1 || row > y2) {
+                if (isWidthNechetnaya) {
                     if (odinocnayaPlitkaAmount > 0) {
                         odinocnayaPlitkaAmount--;
-                    } else {
-                        odinocnayaPlitkaAmount++;
-                        halfedPlitkaAmount++;
+                        continue;
                     }
+                    halfedPlitkaAmount++;
+                    odinocnayaPlitkaAmount++;
                 }
-                col++;
+                continue;
+            }
+            if (isLeftSideNechetnaya) {
+                if (odinocnayaPlitkaAmount > 0) {
+                    odinocnayaPlitkaAmount--;
+                } else {
+                    halfedPlitkaAmount++;
+                    odinocnayaPlitkaAmount++;
+                }
+            }
+            if (isRightSideNechetnaya) {
+                if (odinocnayaPlitkaAmount > 0) {
+                    odinocnayaPlitkaAmount--;
+                } else {
+                    halfedPlitkaAmount++;
+                    odinocnayaPlitkaAmount++;
+                }
             }
         }
         System.out.println(halfedPlitkaAmount);
