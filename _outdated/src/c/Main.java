@@ -7,28 +7,24 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int amount = scanner.nextInt();
         int[] array = new int[amount];
+
         for (int i = 0; i < amount; i++) {
             array[i] = scanner.nextInt();
         }
-        // сумма слева
-        int sumLeft = 0;
-        // сумма справа
+        int sumLeft = array[0];
         int sumRight = 0;
-        // кол-во способов
+        for (int i = 1; i < amount; i++) {
+            sumRight += array[i];
+        }
         int result = 0;
-        // просто чтобы как можно сильнее уменьшить время выполнеия программы. В цикле это проверять было бы сложно
-        int outerBorder = amount - 1;
-        for (int i = 0; i < outerBorder; i++) {
-            sumLeft += array[i];
-            for (int j = i + 1; j < amount; j++) {
-                sumRight += array[j];
-            }
+        for (int i = 1; i < amount; i++) {
             if (sumLeft == sumRight) {
                 result++;
             }
-            sumRight = 0;
+            sumLeft += array[i];
+            sumRight -= array[i];
         }
-        System.out.println(result);
+        System.out.print(result);
     }
 }
 
