@@ -9,16 +9,10 @@ public class Main {
         scanner.nextLine();
         String[] array = new String[amount];
         for (int i = 0; i < amount; i++) {
-            array[i] = scanner.nextLine();
+            array[amount - i - 1] = scanner.nextLine();
         }
-        String temp;
-        for (int i = 0; i < amount; i++) {
-            if (i < amount / 2) {
-                temp = array[i];
-                array[i] = array[amount - i - 1];
-                array[amount - i - 1] = temp;
-            }
-            System.out.println(array[i]);
+        for (String piece : array) {
+            System.out.println(piece);
         }
     }
 }
